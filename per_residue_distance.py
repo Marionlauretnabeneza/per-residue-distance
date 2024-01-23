@@ -8,7 +8,7 @@ import pandas as pd
 import logging
 import argparse
 from matplotlib import pyplot as plt
-
+    
 
 def calculate_static_rmsd(
     polymer1: gemmi.PolymerType.PeptideL,
@@ -313,6 +313,17 @@ if __name__ == "__main__":
 
     plt.show()
 
+    # Ajouter les résultats au DataFrame
+    results = results.append({
+        "PDB_ID1": args.pdb_id1,
+        "Chain1": args.chain1,
+        "PDB_ID2": args.pdb_id2,
+        "Chain2": args.chain2,
+        "RMSD": rmsd_value
+    }, ignore_index=True)
+
+    # Afficher les résultats
+    print(results)
 
 
 
